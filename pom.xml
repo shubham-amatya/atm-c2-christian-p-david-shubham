@@ -7,9 +7,37 @@
     <groupId>io.zipcoder</groupId>
     <artifactId>project-2-atm</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+<dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>RELEASE</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-launcher</artifactId>
+        <version>1.6.2</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-engine</artifactId>
+        <version>1.6.0</version>
+    </dependency>
+</dependencies>
+
 
 </project>
