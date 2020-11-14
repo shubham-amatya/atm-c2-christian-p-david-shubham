@@ -2,55 +2,41 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String ID;
+    private String name;
     private String password;
     ArrayList <Account> Accounts = new ArrayList<Account>();
     private boolean loggedin;
 
 
-    public User(String ID, String password) {
-        this.ID = ID;
+    public User(String name, String password) {
+        this.name = name;
         this.password = password;
         this.Accounts = new ArrayList<Account>();
 
 
     }
-    public String getID(){
-     return ID;
+    public String getName(){
+     return name;
 
     }
-    public ArrayList<Account> getAccount(){
-       return Accounts;
+    public String getAccount(){
+       return Account;
 
     }
-    public boolean authenticate(String password){
-        if (password.equals(this.password)){
-            return true;
-        }
-        return false;
-   }
-
-    public void   createAccount(Integer Account){
-        switch (Account)
-        {
-            case 1:
-
-                Accounts.add(new CheckingAccount(0.0));
-                break;
-            case 2:
-
-                Accounts.add(new SavingsAccount(0.0));
-                break;
-            case 3:
-
-                Accounts.add(new InvestmentAccount(0.0));
-                break;
-        }
+    public String authenticate(String name, String password){
 
     }
 
+    public String createAccount(){
 
-    public boolean getloggedin(){
-    return loggedin;
+        return Account;
+    }
+
+    public String closeAccount(){
+        return Account;
+    }
+
+    public getloggedin(){
+
     }
 }
