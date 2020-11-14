@@ -2,10 +2,11 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String name;
+    private Integer name;
     private String password;
     ArrayList <Account> Accounts = new ArrayList<Account>();
     private boolean loggedin;
+
 
 
     public User(String name, String password) {
