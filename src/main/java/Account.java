@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Account {
     Double balance;
     ArrayList<String> history;
-    // User owner; // uncomment this when User is present
+    User owner; // uncomment this when User is present
 
     public Account(double balance){
         this.balance = balance;
@@ -39,6 +39,14 @@ public class Account {
             sb.append("\n" + s);
         }
         return sb.toString();
+    }
+
+    public boolean closeAccount(){
+        if (balance == 0){
+            owner.getAccounts().remove(this);
+            return true;
+        }
+        return false;
     }
 
     public double getBalance(){
