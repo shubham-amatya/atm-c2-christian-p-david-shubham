@@ -12,7 +12,7 @@ public class CheckingAccountTests {
     @Test
     public void testConstructor(){
         //Given
-        Double expectedAmount = 5.0;
+        Double expectedAmount = 3.0;
         CheckingAccount acc = new CheckingAccount(expectedAmount);
 
         //When
