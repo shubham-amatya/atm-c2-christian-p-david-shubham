@@ -2,14 +2,24 @@ import java.util.ArrayList;
 
 public class User {
 
+
     private String ID;
+
+    private Integer name;
+
     private String password;
     ArrayList <Account> Accounts = new ArrayList<Account>();
     private boolean loggedin;
 
 
+
     public User( String ID, String password) {
         this.ID = ID;
+
+
+    public User(String name, String password) {
+        this.name = name;
+
         this.password = password;
         this.Accounts = new ArrayList<Account>();
 

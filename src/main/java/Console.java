@@ -8,7 +8,9 @@ public class Console {
     private Integer accountType;
     private String stringInput;
     private Integer numInput;
+    private Integer preferredTransaction;
 
+    ATM atm = new ATM();
 
 
     public Console() {
@@ -35,6 +37,9 @@ public class Console {
                 passWord = getStringInput();
             }
         } while (!validFiveDig);
+        User user1 = new User(userID, passWord);
+        atm.addUser(user1);
+        atm.currentUser = user1;
     }
 
     public Integer getNumInput(){
@@ -129,9 +134,32 @@ public String accTypeMenuOptions(){
                         "To print transaction history: Press 5\n" +
                         "To check balance:             Press 6\n ");
 
-                //Switch statements for the various methods...
+
+
+               switch (preferredTransaction){
+                   Integer amountInput;
+                   amountInput = getNumInput();
+                   Account acc = new Account (amountInput);
+                   User user1 = new User(userID, passWord);
+
+                   case 1: acc.withdraw (amountInput);
+                           break;
+                   case 2: acc.deposit(amountInput);
+                           break;
+                   case 3: user1.createAccount();
+                   case 4:user1.closeAccount();
+                   case 5: acc.printTransactionHistory(amountInput);
+                   case 6: acc.getBalance(amountInput);
+
+                   getNumInput();
+
+                   default: System.out.println("Please enter a number from the options menu");
+
+               }
 
             }
+
+
 
         }
 
