@@ -1,31 +1,21 @@
 import java.util.ArrayList;
-
 public class User {
-
-    private String name;
+    private Integer ID;
     private String password;
-    private ArrayList<Account> accounts;
-    private boolean loggedIn;
-
-    public User (String name, String password){
-        this.name = name;
+    ArrayList <Account> Accounts = new ArrayList<Account>();
+    private boolean loggedin;
+    public User( Integer ID, String password) {
+        this.ID = ID;
         this.password = password;
-        accounts = new ArrayList<Account>();
-        loggedIn = false;
+        this.Accounts = new ArrayList<Account>();
     }
-
-    public String getName(){
-        return name;
+    public Integer getID(){
+        return ID;
     }
-
-    public void setName(String name){
-        this.name = name;
+    public ArrayList<Account> getAccount(){
+        return Accounts;
     }
-
-    public ArrayList<Account> getAccounts(){
-        return accounts;
-    }
-
+  
     public boolean authenticate(String password){
         if (password.equals(this.password)){
             return true;
@@ -33,24 +23,22 @@ public class User {
         return false;
     }
 
-    public void createAccount(String accountType){
-        switch (accountType.toLowerCase()) {
-            case "checking account":
-                accounts.add(new CheckingAccount(0.0));
+    public void   createAccount(Integer Account){
+        switch (Account)
+        {
+            case 1:
+                Accounts.add(new CheckingAccount(0.0));
                 break;
-
-            case "savings account":
-                accounts.add(new SavingsAccount(0.0));
+            case 2:
+                Accounts.add(new SavingsAccount(0.0));
                 break;
-
-            case "investment account":
-                accounts.add(new InvestmentAccount(0.0));
+            case 3:
+                Accounts.add(new InvestmentAccount(0.0));
                 break;
         }
     }
-
-    public boolean getLoggedIn(){
-        return loggedIn;
+    public boolean getloggedin(){
+        return loggedin;
     }
-
 }
+

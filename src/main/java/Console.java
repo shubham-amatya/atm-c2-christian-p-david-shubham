@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 
@@ -34,6 +35,3 @@ import java.util.Scanner;
             print("You are not logged in to an account. Please log in to continue.");
         }
     }
-
-
-
