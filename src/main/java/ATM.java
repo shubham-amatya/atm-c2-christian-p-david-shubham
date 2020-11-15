@@ -3,9 +3,10 @@ import com.sun.xml.internal.bind.v2.model.core.ID;
 import java.util.ArrayList;
 // features left to add:
 // -can only have one of each account type per user
-// -transfer
-// -transaction history
-// -check balance
+// - confirmation message after creating account
+// - menu option to close account
+// - refactoring
+
 public class ATM {
     ArrayList<User> users;
     User currentUser;
