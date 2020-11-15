@@ -1,16 +1,18 @@
+
+
 import java.util.ArrayList;
 public class User {
-    private Integer ID;
+    private String name;
     private String password;
     ArrayList <Account> Accounts = new ArrayList<Account>();
     private boolean loggedin;
-    public User( Integer ID, String password) {
-        this.ID = ID;
+    public User( String name, String password) {
+        this.name = name;
         this.password = password;
         this.Accounts = new ArrayList<Account>();
     }
-    public Integer getID(){
-        return ID;
+    public String getName(){
+        return name;
     }
     public ArrayList<Account> getAccount(){
         return Accounts;
@@ -23,16 +25,16 @@ public class User {
         return false;
     }
 
-    public void   createAccount(Integer Account){
+    public void   createAccount(String Account){
         switch (Account)
         {
-            case 1:
+            case "checking account":
                 Accounts.add(new CheckingAccount(0.0));
                 break;
-            case 2:
+            case "savings account":
                 Accounts.add(new SavingsAccount(0.0));
                 break;
-            case 3:
+            case "investment account":
                 Accounts.add(new InvestmentAccount(0.0));
                 break;
         }
