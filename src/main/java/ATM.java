@@ -81,7 +81,7 @@ public class ATM {
                 else {console.notLoggedInError();}
                 break;
 
-                /*
+
             case "transfer":
                 if (loggedIn){
                 transferHandler();}
@@ -90,7 +90,7 @@ public class ATM {
 
             case "transaction history":
                 if (loggedIn){
-                printTransactionHistory();}
+                transactionHistoryHandler();}
                 else {console.notLoggedInError();}
                 break;
 
@@ -99,7 +99,7 @@ public class ATM {
                 checkBalanceHandler();}
                 else {console.notLoggedInError();}
                 break;
-                */
+
 
 
 
@@ -242,49 +242,6 @@ public class ATM {
             console.println("This user does not have a " + acctType + ".");
         }
 
-        /*
-    private void transferHandler() {
-        boolean validInput = false;
-        String acctType1 = "";
-        while (!validInput) {
-            console.println("Accounts available:");
-            for (Account a : currentUser.getAccounts()) {
-                console.println(a.getClass().getTypeName());
-            }
-            String acct = console.getStringInput("Which account would you like to transfer from?"
-                    +"\n Please enter 'checking account', 'savings account', or 'investment account'");
-
-            switch (acct.toLowerCase()) {
-                case "checking account":
-                    acctType1 = "checkingaccount";
-                    validInput = true;
-                    break;
-                case "savings account":
-                    acctType1 = "savingsaccount";
-                    validInput = true;
-                    break;
-                case "investment account":
-                    acctType1 = "investmentaccount";
-                    validInput = true;
-                    break;
-                default:
-                    console.println("You have entered an invalid account type.");
-            }
-        }
-        for (Account a : currentUser.getAccounts()) {
-            if (a.getClass().getTypeName().toLowerCase().equals(acctType1.toLowerCase())) {
-                Double amt = console.getDoubleInput("How much would you like to deposit?");
-                a.deposit(amt);
-                console.println("Deposit successful. Current balance: " + a.getBalance());
-                return;
-            }
-        }
-        console.println("This user does not have a " + acctType + ".");
-    }
-    */
-
-
-
 
     private void createAccountHandler() {
         Boolean validInput = false;
@@ -316,7 +273,159 @@ public class ATM {
     }
 
 
+    private void transferHandler() {
+        boolean validInput = false;
+        String acctType1 = "";
+        Account account1;
+        Account account2;
+        //get the first account
+        while (!validInput) {
+            console.println("Accounts available:");
+            for (Account a : currentUser.getAccounts()) {
+                console.println(a.getClass().getTypeName());
+            }
+            String acct = console.getStringInput("Which account would you like to transfer from?"
+                    + "\n Please enter 'checking account', 'savings account', or 'investment account'");
 
+            switch (acct.toLowerCase()) {
+                case "checking account":
+                    acctType1 = "checkingaccount";
+                    validInput = true;
+                    break;
+                case "savings account":
+                    acctType1 = "savingsaccount";
+                    validInput = true;
+                    break;
+                case "investment account":
+                    acctType1 = "investmentaccount";
+                    validInput = true;
+                    break;
+                default:
+                    console.println("You have entered an invalid account type.");
+            }
+        }
+        for (Account a : currentUser.getAccounts()) {
+            if (a.getClass().getTypeName().toLowerCase().equals(acctType1.toLowerCase())) {
+                account1 = a;
+                //get the second account
+                validInput = false;
+                String acctType2 = "";
+                while (!validInput) {
+                    console.println("Accounts available:");
+                    for (Account b : currentUser.getAccounts()) {
+                        console.println(b.getClass().getTypeName());
+                    }
+                    String acct = console.getStringInput("Which account would you like to transfer to?"
+                            + "\n Please enter 'checking account', 'savings account', or 'investment account'");
+
+                    switch (acct.toLowerCase()) {
+                        case "checking account":
+                            acctType2 = "checkingaccount";
+                            validInput = true;
+                            break;
+                        case "savings account":
+                            acctType2 = "savingsaccount";
+                            validInput = true;
+                            break;
+                        case "investment account":
+                            acctType2 = "investmentaccount";
+                            validInput = true;
+                            break;
+                        default:
+                            console.println("You have entered an invalid account type.");
+                    }
+                }
+                for (Account b : currentUser.getAccounts()) {
+                    if (b.getClass().getTypeName().toLowerCase().equals(acctType2.toLowerCase())) {
+
+                        Double amt = console.getDoubleInput("How much would you like to transfer?");
+                        Boolean result = a.transfer(b, amt);
+                        if (result) {
+                            console.println("Transfer successful.");
+                        } else {
+                            console.println("Transfer unsuccessful. Insufficient funds.");
+                        }
+                        return;
+                    }
+                }
+                console.println("This user does not have a " + acctType2);
+                return;
+
+            }
+            console.println("This user does not have a " + acctType1 + ".");
+        }
+    }
+
+
+    public void transactionHistoryHandler() {
+        Boolean validInput = false;
+        String acctType1 = "";
+        while (!validInput) {
+            console.println("Accounts available:");
+            for (Account a : currentUser.getAccounts()) {
+                console.println(a.getClass().getTypeName());
+            }
+            String acct = console.getStringInput("Which account would you like to get a " +
+                    "transaction history from?"
+                    + "\n Please enter 'checking account', 'savings account', or 'investment account'"); ;
+            switch (acct.toLowerCase()) {
+                case "checking account":
+                    acctType1 = "checkingaccount";
+                    validInput = true;
+                    break;
+                case "savings account":
+                    acctType1 = "savingsaccount";
+                    validInput = true;
+                    break;
+                case "investment account":
+                    acctType1 = "investmentaccount";
+                    validInput = true;
+                    break;
+                default:
+                    console.println("You have selected an invalid account type.");
+            }
+        }
+        for (Account a : currentUser.getAccounts()) {
+            if (a.getClass().getTypeName().toLowerCase().equals(acctType1.toLowerCase())) {
+                console.println(a.printTransactionHistory());
+            }
+        }
+    }
+    public void checkBalanceHandler(){
+        Boolean validInput = false;
+        String acctType1 = "";
+        String transactionHistory;
+        while (!validInput) {
+            console.println("Accounts available:");
+            for (Account a : currentUser.getAccounts()) {
+                console.println(a.getClass().getTypeName());
+            }
+            String acct = console.getStringInput("Which account would you like to get a " +
+                    "transaction history from?"
+                    + "\n Please enter 'checking account', 'savings account', or 'investment account'"); ;
+            switch (acct.toLowerCase()) {
+                case "checking account":
+                    acctType1 = "checkingaccount";
+                    validInput = true;
+                    break;
+                case "savings account":
+                    acctType1 = "savingsaccount";
+                    validInput = true;
+                    break;
+                case "investment account":
+                    acctType1 = "investmentaccount";
+                    validInput = true;
+                    break;
+                default:
+                    console.println("You have selected an invalid account type.");
+            }
+        }
+        for (Account a : currentUser.getAccounts()) {
+            if (a.getClass().getTypeName().toLowerCase().equals(acctType1.toLowerCase())) {
+                console.println(Double.toString(a.getBalance()));
+            }
+        }
+    }
 
 
 
