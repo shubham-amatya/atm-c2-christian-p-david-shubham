@@ -20,8 +20,8 @@ public class User {
      return name;
 
     }
-    public String getAccount(){
-       return Account;
+    public ArrayList<Account> getAccounts(){
+       return Accounts;
 
     }
     public String authenticate(String name, String password){

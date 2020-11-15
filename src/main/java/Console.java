@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
@@ -9,6 +10,8 @@ public class Console {
     private String stringInput;
     private Integer numInput;
     private Integer preferredTransaction;
+    private Double numInputDouble;
+    private Account currentAcc;
 
     ATM atm = new ATM();
 
@@ -57,6 +60,24 @@ public class Console {
         }
     } while(!(isNumber));
             return numInput;
+
+    }
+
+    public Double getNumInputDouble(){
+        boolean isNumber;
+
+        do
+        {
+            if (mainMenu.hasNextInt()) {
+                numInputDouble = mainMenu.nextDouble();
+                isNumber = true;
+            } else {
+                System.out.println("Please enter a valid number : ");
+                isNumber = false;
+                mainMenu.next();
+            }
+        } while(!(isNumber));
+        return numInputDouble;
 
     }
 
@@ -110,15 +131,39 @@ public String accTypeMenuOptions(){
                 }
             }
         }while (!(validAccType)) ;
+        User currentUser = atm.getCurrentUser();
+        ArrayList<Account> accts = currentUser.getAccounts();
+
+
             switch (accountType) {
+
                 case 1:
-                    //getChecking();
+
+                    for (Account a : accts){
+                        if (a instanceof CheckingAccount){
+                            currentAcc = a;
+                        }
+                    }
+                    optionsMenu ();
                     break;
                 case 2:
-                    //getSaving();
+
+                    for (Account a : accts){
+                        if (a instanceof SavingsAccount){
+                            currentAcc = a;
+                        }
+                    }
+                    optionsMenu ();
+
                     break;
                 case 3:
-                    //getInvestment();
+                    for (Account a : accts){
+                        if (a instanceof InvestmentAccount){
+                            currentAcc = a;
+
+                        }
+                    }
+                    optionsMenu ();
                     break;
 
             }
@@ -135,31 +180,33 @@ public String accTypeMenuOptions(){
                         "To check balance:             Press 6\n ");
 
 
+                   preferredTransaction = getNumInput();
 
+                Double amountInput;
+                amountInput = getNumInputDouble();
                switch (preferredTransaction){
-                   Integer amountInput;
-                   amountInput = getNumInput();
-                   Account acc = new Account (amountInput);
-                   User user1 = new User(userID, passWord);
 
-                   case 1: acc.withdraw (amountInput);
+                   case 1: currentAcc.withdraw (amountInput);
                            break;
-                   case 2: acc.deposit(amountInput);
+                   case 2: currentAcc.deposit(amountInput);
                            break;
-                   case 3: user1.createAccount();
-                   case 4:user1.closeAccount();
-                   case 5: acc.printTransactionHistory(amountInput);
-                   case 6: acc.getBalance(amountInput);
+                   case 3: atm.getCurrentUser().createAccount();
+                           break;
+                   case 4: currentAcc.closeAccount();
+                           break;
 
-                   getNumInput();
+                   case 5: currentAcc.printTransactionHistory();
+                            break;
+                   case 6: currentAcc.getBalance();
+                            break;
+
 
                    default: System.out.println("Please enter a number from the options menu");
-
+                       getNumInput();
                }
 
             }
-
-
+            
 
         }
 

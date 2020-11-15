@@ -16,8 +16,13 @@ public class ATM {//extends User{
 
 
   }
-    public void logIn(){
 
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void logIn(){
+        System.out.println("Please enter your new account number: ");
        Integer newLoginInfo = console.getNumInput();
        for(User U: Users){
            if(U.equals(newLoginInfo)){
