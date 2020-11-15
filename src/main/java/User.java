@@ -14,7 +14,7 @@ public class User {
     public String getName(){
         return name;
     }
-    public ArrayList<Account> getAccount(){
+    public ArrayList<Account> getAccounts(){
         return Accounts;
     }
   
