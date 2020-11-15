@@ -15,12 +15,14 @@ public class User {
     public ArrayList<Account> getAccount(){
         return Accounts;
     }
+  
     public boolean authenticate(String password){
         if (password.equals(this.password)){
             return true;
         }
         return false;
     }
+
     public void   createAccount(Integer Account){
         switch (Account)
         {
@@ -39,3 +41,4 @@ public class User {
         return loggedin;
     }
 }
+

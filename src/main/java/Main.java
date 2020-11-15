@@ -5,11 +5,9 @@ import java.io.IOException;
  */
 public class Main {
 
-    public static void main(String[] args)  {
-        Console myConsole = new Console();
-        myConsole.welcomeInput();
-        myConsole.accountTypeMenu();
-        myConsole.optionsMenu();
-        
+
+    public static void main(String[] args){
+        ATM atm = new ATM();
+        atm.init();
     }
 }
