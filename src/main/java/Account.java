@@ -1,9 +1,13 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Account {
     private Double balance;
     private ArrayList<String> history;
     private User owner; // uncomment this when User is present
+    private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
     public Account(double balance){
         this.balance = balance;
@@ -62,7 +66,8 @@ public class Account {
     }
 
     public void addToHistory(String type, Double amt){
-        String entry = String.format("%s of $" + "%.2f", type, amt);
+        String balanceFormatted = currencyFormat.format(amt);
+        String entry = String.format(type + " of " + balanceFormatted + " at " + new Date().toString());
         history.add(entry);
     }
 

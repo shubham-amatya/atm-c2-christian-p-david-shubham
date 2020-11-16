@@ -27,8 +27,14 @@ import java.util.Scanner;
         }
 
         public Double getDoubleInput(String prompt) {
-            String userInput = getStringInput(prompt);
-            return Double.parseDouble(userInput);  //read entered String as a Double and return Double
+            Scanner scanner = new Scanner(System.in);
+            println(prompt);
+            while (!scanner.hasNextDouble()){
+                scanner.next();
+                System.out.println("Please enter a valid price. You do not need to include $.");
+            }
+            double userInput = scanner.nextDouble();
+            return userInput;
         }
 
         public void notLoggedInError(){
