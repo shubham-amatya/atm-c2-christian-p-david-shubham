@@ -1,13 +1,21 @@
 import java.util.ArrayList;
 
 public class Account {
-    Double balance;
-    ArrayList<String> history;
-    User owner; // uncomment this when User is present
+    private Double balance;
+    private ArrayList<String> history;
+    private User owner; // uncomment this when User is present
 
     public Account(double balance){
         this.balance = balance;
         history = new ArrayList<String>();
+    }
+
+    public void setOwner(User owner){
+        this.owner = owner;
+    }
+
+    public User getOwner(){
+        return owner;
     }
 
     public Double withdraw(Double amt){

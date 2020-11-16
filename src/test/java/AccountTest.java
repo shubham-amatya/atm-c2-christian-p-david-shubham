@@ -86,5 +86,21 @@ public class AccountTest {
         assertEquals(0.0, b.getBalance(), 0.0001);
     }
 
+    @Test
+    public void testA7(){
+        //Given
+        Account a = new Account(0.0);
+        User expectedUser = new User("James", "opensesame");
+        a.setOwner(expectedUser);
+
+        //When
+        User actualUser = a.getOwner();
+
+        //Then
+        assertEquals(expectedUser, actualUser);
+
+
+    }
+
 
 }
