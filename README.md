@@ -33,9 +33,7 @@ Tests should demonstrate proper behavior, and proper handling of misuse (eg. att
   - Opportunity for research
 
 
-Recommended:
-Create a `Console` class that manages console interactions.
-Create a `ConsoleMock` for testing (provide scripted user input using this object).
+
 
 ## What's next?
 The next lab is located [here](https://github.com/Zipcoder/ZCW-MesoLabs-OOP-BankAccountManager).
